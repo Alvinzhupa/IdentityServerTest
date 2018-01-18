@@ -30,6 +30,7 @@ namespace IdentityServerCenter
             .AddDeveloperSigningCredential()
             .AddInMemoryApiResources(Config.GetApiResources())
             .AddInMemoryClients(Config.GetClients())
+            .AddTestUsers(Config.GetTestUsers())
             //.AddDeveloperSigningCredential();
             ;
             services.AddMvc();

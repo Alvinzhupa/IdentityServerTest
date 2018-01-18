@@ -1,4 +1,5 @@
 ﻿using IdentityServer4.Models;
+using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,20 @@ namespace IdentityServerCenter
                     },
                     // 客户端有权访问的范围（Scopes）
                     AllowedScopes = { "api1" }
+                },
+                new Client(){
+                    ClientId="pwdclient",
+                    AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
+                     ClientSecrets={ new Secret("secret".Sha256()) },
+                     AllowedScopes={"api1" }
                 }
+            };
+        }
+
+        public static List<TestUser> GetTestUsers()
+        {
+            return new List<TestUser> {
+                new TestUser(){ Password="123", Username="abc",SubjectId="1" }
             };
         }
     }
