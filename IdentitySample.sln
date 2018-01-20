@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityAPICenter", "IdentityAPICenter\IdentityAPICenter.csproj", "{83BE8074-3821-4216-9F2C-598E34B475FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityClient", "IdentityClient\IdentityClient.csproj", "{6695C325-9046-4CF7-AED3-7A8432C4B88F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerCenter", "IdentityServerCenter\IdentityServerCenter.csproj", "{0D06F0DD-618F-4BDD-93AE-FC26BB8E83AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerMVC", "IdentityServerMVC\IdentityServerMVC.csproj", "{CC5ED3CE-CEF9-48F9-B86E-C44C46B0252B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0D06F0DD-618F-4BDD-93AE-FC26BB8E83AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D06F0DD-618F-4BDD-93AE-FC26BB8E83AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D06F0DD-618F-4BDD-93AE-FC26BB8E83AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC5ED3CE-CEF9-48F9-B86E-C44C46B0252B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC5ED3CE-CEF9-48F9-B86E-C44C46B0252B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC5ED3CE-CEF9-48F9-B86E-C44C46B0252B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC5ED3CE-CEF9-48F9-B86E-C44C46B0252B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
