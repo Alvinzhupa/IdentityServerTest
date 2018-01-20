@@ -28,13 +28,18 @@ namespace IdentityServerMVC
                     ClientId = "client",
                     //简化模式
                     AllowedGrantTypes = GrantTypes.Implicit,
+                     RedirectUris={
+
+                    },
                     // 用于认证的密码
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
                     // 客户端有权访问的范围（Scopes）
-                    AllowedScopes = { "api1" }
+                    AllowedScopes = {
+                      
+                    }
                 }
             };
         }
