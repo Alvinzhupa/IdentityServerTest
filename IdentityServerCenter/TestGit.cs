@@ -12,6 +12,7 @@ namespace IdentityServerCenter
         /// </summary>
         public int dev1_update1 { get; set; }
         public int dev1_update2 { get; set; }
+        public int dev1_update3 { get; set; }
 
 
     }
