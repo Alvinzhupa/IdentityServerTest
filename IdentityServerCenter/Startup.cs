@@ -25,14 +25,13 @@ namespace IdentityServerCenter
         {
             services.AddIdentityServer(setupAction =>
             {
-                //setupAction
             })
             .AddDeveloperSigningCredential()
             .AddInMemoryApiResources(Config.GetApiResources())
             .AddInMemoryClients(Config.GetClients())
             .AddTestUsers(Config.GetTestUsers())
-            //.AddDeveloperSigningCredential();
-            ;
+            .AddInMemoryIdentityResources(Config.GetIdentityResources())  ;
+
             services.AddMvc();
         }
 

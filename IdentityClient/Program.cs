@@ -14,6 +14,7 @@ namespace IdentityClient
 
         public static async void Do()
         {
+            
             // 从元数据中发现端口
             var disco = await DiscoveryClient.GetAsync("http://localhost:5000");
 
@@ -31,3 +32,4 @@ namespace IdentityClient
         }
     }
 }
+
