@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServerOpenIDConnet
+namespace IdentityServerClientForOIDC
 {
     public class Program
     {
@@ -20,7 +20,6 @@ namespace IdentityServerOpenIDConnet
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:5002")
                 .Build();
     }
 }

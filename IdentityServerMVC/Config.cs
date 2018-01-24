@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
@@ -25,21 +26,32 @@ namespace IdentityServerMVC
             {
                 new Client
                 {
-                    ClientId = "client",
+                    ClientId = "mvc",
+                    ClientName="MVC Client",
+                    RequireConsent=false, //就是点击是否授权的页面
                     //简化模式
                     AllowedGrantTypes = GrantTypes.Implicit,
-                     RedirectUris={
+                  
+                    //登录完成回调的地址
+                   RedirectUris = { "http://localhost:5001/signin-oidc" },//这里因为客户端使用oidc的方式,所以直接回调到这里指定的页面
 
-                    },
+                   // 登录退出后回调页面
+                   PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-oidc" },
+
+                   //这里应该是对应IdentityResource的值的,估计是,要测试了才知道
+                    AllowedScopes = new List<string>
+                   {
+                       IdentityServerConstants.StandardScopes.OpenId,
+                       IdentityServerConstants.StandardScopes.Profile,
+                       
+                   },
+
                     // 用于认证的密码
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
-                    // 客户端有权访问的范围（Scopes）
-                    AllowedScopes = {
-                      
-                    }
+
                 }
             };
         }
@@ -51,6 +63,11 @@ namespace IdentityServerMVC
             };
         }
 
+
+        /// <summary>
+        /// 授权中心所有允许返回的身份信息,但是每个客户端都有可能不同
+        /// </summary>
+        /// <returns></returns>
         public static List<IdentityResource> GetIdentiityResource()
         {
             return new List<IdentityResource>() {

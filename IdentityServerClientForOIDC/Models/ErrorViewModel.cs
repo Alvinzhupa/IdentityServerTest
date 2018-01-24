@@ -1,6 +1,6 @@
 using System;
 
-namespace IdentityServerOpenIDConnet.Models
+namespace IdentityServerClientForOIDC.Models
 {
     public class ErrorViewModel
     {
