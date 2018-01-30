@@ -1,0 +1,19 @@
+﻿@model ScopeViewModel
+
+<li>
+    <label>
+        <input type="checkbox"
+               value="@Model.Name"
+               id="scope_@Model.Name"
+               checked="@Model.Checked"
+               disabled="@Model.Required" />
+    </label>
+
+    @if (!string.IsNullOrEmpty(Model.Name))
+    {
+        <div>
+            <label for="scope_@Model.Name">@Model.Name</label>
+        </div>
+
+    }
+</li>

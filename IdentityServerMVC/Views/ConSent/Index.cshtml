@@ -1,0 +1,40 @@
+﻿@using IdentityServerMVC.Models;
+@model ConsentViewModel
+
+<p>Consend Page</p>
+<div class="row page-header">
+    <div class="col-sm-10">
+
+        @if (string.IsNullOrWhiteSpace(Model.ClientLogoUrl))
+        {
+            <div><img src="@Model.ClientLogoUrl" /></div>
+            <h1>
+                应用名称: @Model.ClientName
+            </h1>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8">
+        <form asp-action="index">
+            <ul class="list-group">
+                @if (Model.IdentityScopes != null && Model.IdentityScopes.Count() > 0)
+                {
+                    foreach (var idntityScope in Model.IdentityScopes)
+                    {
+                        Html.RenderPartial("ScopeListItem", idntityScope);
+                    }
+                }
+
+                @if (Model.ResourceScopes != null && Model.ResourceScopes.Count() > 0)
+                {
+                    foreach (var resource in Model.ResourceScopes)
+                    {
+                        Html.RenderPartial("ScopeListItem", resource);
+                    }
+                }
+            </ul>
+        </form>
+    </div>
+</div>
