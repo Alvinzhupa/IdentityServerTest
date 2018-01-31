@@ -46,7 +46,7 @@ namespace IdentityServerMVC
                    {
                        IdentityServerConstants.StandardScopes.OpenId,
                        IdentityServerConstants.StandardScopes.Profile,
-
+                       //IdentityServerConstants.StandardScopes.Email
                    },
 
                     // 用于认证的密码
@@ -76,7 +76,7 @@ namespace IdentityServerMVC
             return new List<IdentityResource>() {
               new IdentityResources.OpenId(),
               new IdentityResources.Profile(),
-               new IdentityResources.Email()
+              // new IdentityResources.Email()
             };
         }
     }

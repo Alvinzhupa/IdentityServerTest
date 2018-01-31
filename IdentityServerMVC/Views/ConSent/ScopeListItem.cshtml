@@ -6,13 +6,20 @@
                value="@Model.Name"
                id="scope_@Model.Name"
                checked="@Model.Checked"
-               disabled="@Model.Required" />
-    </label>
+               disabled="@Model.Required"
+               name="scopeItems" />
 
-    @if (!string.IsNullOrEmpty(Model.Name))
+        @if (Model.Required)
+        {
+            <input type="hidden" value="@Model.Name" name="scopeItems" />
+
+        }
+    </label>
+    <strong>@Model.Name</strong>
+    @if (!string.IsNullOrEmpty(Model.Description))
     {
         <div>
-            <label for="scope_@Model.Name">@Model.Name</label>
+            <label for="scope_@Model.Name">@Model.Description</label>
         </div>
 
     }

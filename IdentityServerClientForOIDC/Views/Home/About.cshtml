@@ -4,4 +4,12 @@
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<dl>
+    @foreach (var clamin in User.Claims)
+    {
+    <dt>
+        Type:   @clamin.Type  &nbsp;&nbsp;    Value:   @clamin.Value &nbsp;&nbsp; ValueType:@clamin.ValueType
+    </dt>
+     
+    }
+</dl>
