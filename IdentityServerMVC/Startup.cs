@@ -18,6 +18,7 @@ namespace IdentityServerMVC
     {
         public Startup(IConfiguration configuration)
         {
+            var abc = "23432";
             Configuration = configuration;
         }
 

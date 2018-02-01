@@ -14,6 +14,7 @@ namespace IdentityServerMVC
     {
         public static void Main(string[] args)
         {
+            var abc = 1;
             BuildWebHost(args).Run();
         }
 
