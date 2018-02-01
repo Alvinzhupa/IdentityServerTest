@@ -26,7 +26,7 @@ namespace IdentityServerMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IEmailSender, EmailSender>();
+            //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.GetIdentiityResource())//配置身份验证信息的相关资源(OpenIDConenet才需要)
