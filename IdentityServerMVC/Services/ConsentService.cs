@@ -24,8 +24,19 @@ namespace IdentityServerMVC.Services
         }
 
         #region 私有方法
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="authorizationRequest"></param>
+        /// <param name="client"></param>
+        /// <param name="resources"></param>
+        /// <param name="inputConsentViewModel"></param>
+        /// <returns></returns>
         private ConsentViewModel CreateConsentViewModel(AuthorizationRequest authorizationRequest, Client client, Resources resources, InputConsentViewModel inputConsentViewModel)
         {
+            var selectedScopes = inputConsentViewModel?.scopeItems ?? Enumerable.Empty<string>();
+
             ConsentViewModel consentViewModel = new ConsentViewModel();
 
             consentViewModel.ClientId = client.ClientId;
@@ -34,8 +45,8 @@ namespace IdentityServerMVC.Services
             consentViewModel.ClientUrl = client.ClientUri;
             consentViewModel.RemenberConsent = client.AllowRememberConsent;
 
-            consentViewModel.IdentityScopes = resources.IdentityResources.Select(i => CreateScopeViewModel(i, inputConsentViewModel.scopeItems.Contains(i.Name))); //身份资源
-            consentViewModel.ResourceScopes = resources.ApiResources.SelectMany(c => c.Scopes).Select(x => CreateScopeViewModel(x, inputConsentViewModel.scopeItems.Contains(x.Name))); //api资源, 注意这里使用了SelectMany,应该是拆了2层List 
+            consentViewModel.IdentityScopes = resources.IdentityResources.Select(i => CreateScopeViewModel(i, selectedScopes.Contains(i.Name))); //身份资源
+            consentViewModel.ResourceScopes = resources.ApiResources.SelectMany(c => c.Scopes).Select(x => CreateScopeViewModel(x, selectedScopes.Contains(x.Name))); //api资源, 注意这里使用了SelectMany,应该是拆了2层List 
 
             return consentViewModel;
         }
@@ -107,7 +118,7 @@ namespace IdentityServerMVC.Services
             }
             else
             {
-
+                consentResponse = ConsentResponse.Denied;//拒绝授权
             }
 
             if (consentResponse != null)

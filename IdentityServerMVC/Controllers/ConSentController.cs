@@ -38,7 +38,12 @@ namespace IdentityServerMVC.Controllers
             {
                 return Redirect(processConsentResult.ReturnUrl);
             }
-           
+
+            if (!string.IsNullOrEmpty(processConsentResult.ValidateErrorMessage))
+            {
+                ModelState.AddModelError("", processConsentResult.ValidateErrorMessage);
+            }
+
 
             return View(processConsentResult.consentViewModel);
         }

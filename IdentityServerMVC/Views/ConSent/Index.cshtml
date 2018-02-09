@@ -15,6 +15,15 @@
     </div>
 </div>
 
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <strong>Error</strong>
+        <div asp-validation-summary="All" class="danger">
+
+        </div>
+    </div>
+}
 <div class="row">
     <form asp-action="index" method="post">
         <input type="hidden" asp-for="ReutrnUrl" />
@@ -50,7 +59,7 @@
 
         <div>
             <button name="button" value="yes" class="btn btn-primary" type="submit" autofocus>同意</button>
-            <button name="button" value="no" class="btn btn-default" type="submit" >取消</button>
+            <button name="button" value="no" class="btn btn-default" type="submit">取消</button>
         </div>
     </form>
 </div>

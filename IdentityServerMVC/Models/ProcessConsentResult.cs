@@ -8,7 +8,7 @@ namespace IdentityServerMVC.Models
     public class ProcessConsentResult
     {
         public string ReturnUrl { get; set; }
-        public bool IsReturnUrl => string.IsNullOrEmpty(ReturnUrl);
+        public bool IsReturnUrl => !string.IsNullOrEmpty(ReturnUrl);
         public string ValidateErrorMessage { get; set; }
         public ConsentViewModel consentViewModel { get; set; }
     }

@@ -28,12 +28,26 @@ namespace IdentityServerMVC
         {
             //services.AddTransient<IEmailSender, EmailSender>();
 
+            //添加数据库连接配置
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
+            });
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+              .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
+
+            services.AddScoped<ConsentService>();
+
             services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.GetIdentiityResource())//配置身份验证信息的相关资源(OpenIDConenet才需要)
                 .AddInMemoryClients(Config.GetClients())//配置客户端的相关信息
                 .AddInMemoryApiResources(Config.GetApiResources())//资源中心,就是访问的API
                 .AddTestUsers(Config.GetTestUsers())//测试使用的用户
                 .AddDeveloperSigningCredential(); //添加测试的开发者证书,不知道如果去掉会怎么样
+
+
 
             services.AddMvc();
         }
@@ -56,8 +70,8 @@ namespace IdentityServerMVC
 
             app.UseIdentityServer();
 
-          // app.UseAuthentication();
-            
+            // app.UseAuthentication();
+
 
             app.UseMvc(routes =>
             {
