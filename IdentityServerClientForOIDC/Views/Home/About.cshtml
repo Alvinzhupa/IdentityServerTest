@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Authentication;   @*必须添加此命名空间*@
+
+@{
     ViewData["Title"] = "About";
 }
 <h2>@ViewData["Title"]</h2>
@@ -12,4 +14,10 @@
     </dt>
      
     }
+
+    <dt> 
+        id_Token= @await ViewContext.HttpContext.GetTokenAsync("id_token") <br />
+        refresh_token=@await  ViewContext.HttpContext.GetTokenAsync("refresh_token") <br />
+        access_token=@await  ViewContext.HttpContext.GetTokenAsync("access_token")
+    </dt>
 </dl>

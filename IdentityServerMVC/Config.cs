@@ -29,7 +29,7 @@ namespace IdentityServerMVC
                     ClientId = "mvc",
                     ClientName="MVC Client",
                      ClientUri="http://localhost:5001",
-                     AllowRememberConsent=true,
+                     AllowRememberConsent=false,
                     LogoUri="http://img3.redocn.com/tupian/20151019/zhengfangxingchuangyishejituan_5119806.jpg",
                     RequireConsent=true, //就是点击是否授权的页面
                     //简化模式

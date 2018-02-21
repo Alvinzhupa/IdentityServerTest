@@ -34,7 +34,14 @@ namespace IdentityServerMVC
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(option => {
+                option.Password.RequiredLength = 6;
+                option.Password.RequiredUniqueChars = 0;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireDigit = false;
+            })
               .AddEntityFrameworkStores<ApplicationDbContext>()
               .AddDefaultTokenProviders();
 
@@ -44,7 +51,7 @@ namespace IdentityServerMVC
                 .AddInMemoryIdentityResources(Config.GetIdentiityResource())//配置身份验证信息的相关资源(OpenIDConenet才需要)
                 .AddInMemoryClients(Config.GetClients())//配置客户端的相关信息
                 .AddInMemoryApiResources(Config.GetApiResources())//资源中心,就是访问的API
-                .AddTestUsers(Config.GetTestUsers())//测试使用的用户
+                .AddAspNetIdentity<ApplicationUser>()//需要添加nuget包:IdentityServer4.AspIdentityxxxx的包
                 .AddDeveloperSigningCredential(); //添加测试的开发者证书,不知道如果去掉会怎么样
 
 

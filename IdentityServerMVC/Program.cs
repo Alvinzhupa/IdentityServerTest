@@ -7,15 +7,16 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-
+using IdentityServerMVC.Data;
 namespace IdentityServerMVC
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var abc = 1;
-            BuildWebHost(args).Run();
+            BuildWebHost(args)
+              
+                .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
